@@ -15,7 +15,8 @@
     <div id="hd" class="yui3-g header">
         <div class="yui3-u-3-4">
             {{#if projectLogo}}
-                <h1><img src="{{projectLogo}}" title="{{projectName}}"></h1>
+                <h1><img src="{{projectLogo}}" title="{{projectName}}"><div id="titleAndDescription">{{projectName}}
+                    <div>{{projectDescription}}</div></div></h1>
             {{else}}
                 <h1><img src="{{projectAssets}}/css/logo.png" title="{{projectName}}"></h1>
             {{/if}}

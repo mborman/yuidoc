@@ -199,6 +199,21 @@ th {
     width: 99%;
 }
 
+#titleAndDescription {
+    color: #225577;
+    display: inline-block;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    line-height: 1em;
+    position: relative;
+    top: -3px;
+    vertical-align: top;
+}
+#titleAndDescription div {
+    color: #666666;
+    font-size: 54.2%;
+    line-height: 1em;
+}
 /* -- Table of Contents ----------------------------------------------------- */
 
 /* The #toc id refers to the single global table of contents, while the .toc
