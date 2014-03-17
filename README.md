@@ -12,7 +12,7 @@ conventions like Custom Events. That said, it can be used easily and productivel
 Current Build Status
 --------------------
 
-[![Build Status](https://secure.travis-ci.org/yui/yuidoc.png?branch=master)](http://travis-ci.org/yui/yuidoc)
+[![Build Status](https://travis-ci.org/mborman/yuidoc-asp.png)](https://travis-ci.org/mborman/yuidoc-asp)
 
 Installation
 ------------
