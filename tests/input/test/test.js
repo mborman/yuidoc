@@ -112,6 +112,26 @@ Test newlines before descriptions.
     Nobody knows!
 **/
 
+/**
+'' Test ASP comment syntax.
+''
+'' @method testAspCommentSyntax
+''
+' @param {String} foo single apostrophe.
+'
+'* @param {String} bar single apostrophe and asterisk.
+'
+'   * @param {String} bas single apostrophe, whitespace, and asterisk.
+'
+'' @param {String} bat double apostrophe.
+''
+''* @param {String} bau double apostrophe and asterisk.
+''
+''   * @param {String} bav double apostrophe, whitespace, and asterisk.
+''
+'' @return {Boolean} true when test is awesome
+''**/
+
     /**
      * Testing really long param description paring
      * @method reallyLongParamDesc

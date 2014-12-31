@@ -260,7 +260,7 @@ suite.add(new YUITest.TestCase({
         Assert.areSame('String', item2["return"].type, 'Type should not be missing');
     },
     'test: parameter parsing': function () {
-        var item, item2, item3, item4;
+        var item, item2, item3, item4, item5;
         item = this.findByName('testoptional', 'myclass');
         Assert.isArray(item.params, 'Params should be an array');
         Assert.areSame(6, item.params.length, 'Failed to parse all 6 parameters');
@@ -310,6 +310,16 @@ suite.add(new YUITest.TestCase({
         Assert.isUndefined(item4.params[0].optional, 'Optional should not be set');
         Assert.isTrue(item4.params[0].multiple, 'Multiple not set');
         Assert.isUndefined(item4['return'].type, 'Type should be missing');
+
+        item5 = this.findByName('testAspCommentSyntax', 'myclass');
+        Assert.isArray(item5.params, 'Params should be an array.');
+        Assert.areSame(6, item5.params.length, 'Should parse six params.');
+        Assert.areSame('foo', item5.params[0].name, 'Param 0 should have the correct name.');
+        Assert.areSame('bar', item5.params[1].name, 'Param 1 should have the correct name.');
+        Assert.areSame('bas', item5.params[2].name, 'Param 2 should have the correct name.');
+        Assert.areSame('bat', item5.params[3].name, 'Param 3 should have the correct name.');
+        Assert.areSame('bau', item5.params[4].name, 'Param 4 should have the correct name.');
+        Assert.areSame('bav', item5.params[5].name, 'Param 5 should have the correct name.');
 
         item = this.findByName('testNewlineBeforeDescription', 'myclass');
         Assert.isArray(item.params, 'Params should be an array.');
