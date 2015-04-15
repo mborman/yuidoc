@@ -1,56 +1,13 @@
 {
-  "name": "yuidocjs",
-  "version": "0.4.0",
-  "description": "YUIDoc, YUI's JavaScript Documentation engine.",
-  "author": "Dav Glass <davglass@gmail.com>",
+  "name": "yuidoc-asp",
+  "version": "0.0.1",
+  "description": "YUIDoc, YUI's JavaScript Documentation engine tweaked to work with VB/VBScript comments.",
+  "author": "Mike Borman <mikewborman@gmail.com>",
   "bugs": {
-    "url": "http://github.com/yui/yuidoc/issues"
+    "url": "https://github.com/mborman/yuidoc-asp"
   },
   "contributors": [
-    {
-      "name": "Adam Moore",
-      "email": "amoore@gmail.com"
-    },
-    {
-      "name": "Ryan Grove",
-      "email": "ryan@wonko.com"
-    },
-    {
-      "name": "Eric Ferraiuolo",
-      "email": "eferraiuolo@gmail.com"
-    },
-    {
-      "name": "Felipe Gasper",
-      "email": "felipe@cpanel.net"
-    },
-    {
-      "name": "Evan Goer",
-      "email": "evan@goer.org"
-    },
-    {
-      "name": "Alberto Gragera",
-      "email": "albgra@gmail.com"
-    },
-    {
-      "name": "Pat Cavit",
-      "email": "pcavit@gmail.com"
-    },
-    {
-      "name": "Kazuhito Hokamura",
-      "email": "k.hokamura@gmail.com"
-    },
-    {
-      "name": "prodaea",
-      "email": "rlee@etherealnation.net"
-    },
-    {
-      "name": "Wei Wang",
-      "email": "weiwang85@gmail.com"
-    },
-    {
-      "name": "Thomas Boyt",
-      "email": "me@thomasboyt.com"
-    }
+    
   ],
   "engines": {
     "node": ">=0.10.0"
@@ -63,7 +20,8 @@
     "documentation",
     "javadoc",
     "docs",
-    "apidocs"
+    "apidocs",
+    "asp"
   ],
   "main": "./lib/index",
   "bin": {
@@ -97,7 +55,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "http://github.com/yui/yuidoc.git"
+    "url": "https://github.com/mborman/yuidoc-asp.git"
   },
   "jshintConfig": {
     "bitwise": true,
