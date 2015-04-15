@@ -24,7 +24,7 @@ it can be used easily and productively on non-YUI code.
 Installation
 ------------
 
-    npm install -g yuidocjs
+    npm install -g yuidoc-asp
 
 Documentation
 -------------
