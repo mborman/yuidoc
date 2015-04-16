@@ -75,7 +75,7 @@
   ],
   "main": "./lib/index",
   "bin": {
-    "yuidoc": "./lib/cli.js"
+    "yuidoc-asp": "./lib/cli.js"
   },
   "dependencies": {
     "express": "^4.12.3",
