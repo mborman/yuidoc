@@ -25,12 +25,11 @@ following comment pattern:
       ' detect awesome
     End Function
 
-*Note:* The above function _rarely_ returns true... remember, we are talking about ASP here.
+**Note:** The above function _rarely_ returns true... remember, we are talking about ASP here.
 But as long as myself and others are burdened with maintaining legacy ASP code we might as well
 have decent documentation that blends perfectly with our other documentation.
 
-Format explained:
-
+Format explained:  
 VBScript does not have a block comment. It only supports line comments using an apostrophe 
 as the comment marker. To make it work, the standard YUI doc comment is placed within a VBScript
 comment. Additionally the VBScript comment character (the apostrophe) causes issues with
