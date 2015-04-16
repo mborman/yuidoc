@@ -15,13 +15,19 @@ YUIDoc-asp is a fork of YUIDoc that has been tweaked so it can recognize the com
 required in VBScript. This fork is an exact copy of YUIDoc except it will recognize the
 following comment pattern:
 
-''/**
-'' Method description
-'' @method methodName
-'' @param {string} param1
-'' @param {number} param2
-'' @retrun {boolean} `true` if some condition is met. Otherwise `false`
-''*/
+    ''/**
+    '' * This is an example function
+    '' * @method testForAwesome
+    '' * @param testValue {string} a value to test
+    '' * @return `true` when awesome is in abundance
+    '' */
+    Function testForAwesome(testValue)
+      ' detect awesome
+    End Function
+
+Note: The above function _rarely_ returns true... remember, we are talking about ASP here.
+But as long as myself and others are burdened with maintaining legacy ASP code we might as well
+have decent documentation that blends perfectly with our other documentation.
 
 Format explained:
 VBScript does not have a block comment. It only supports line comments using an apostrophe 
