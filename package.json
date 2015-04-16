@@ -7,7 +7,56 @@
   "bugs": {
     "url": "https://github.com/mborman/yuidoc-asp/issues"
   },
-  "contributors": [],
+  "contributors": [
+    {
+      "name": "Dav Glass",
+      "email": "davglass@gmail.com"
+    },
+    {
+      "name": "Adam Moore",
+      "email": "amoore@gmail.com"
+    },
+    {
+      "name": "Ryan Grove",
+      "email": "ryan@wonko.com"
+    },
+    {
+      "name": "Eric Ferraiuolo",
+      "email": "eferraiuolo@gmail.com"
+    },
+    {
+      "name": "Felipe Gasper",
+      "email": "felipe@cpanel.net"
+    },
+    {
+      "name": "Evan Goer",
+      "email": "evan@goer.org"
+    },
+    {
+      "name": "Alberto Gragera",
+      "email": "albgra@gmail.com"
+    },
+    {
+      "name": "Pat Cavit",
+      "email": "pcavit@gmail.com"
+    },
+    {
+      "name": "Kazuhito Hokamura",
+      "email": "k.hokamura@gmail.com"
+    },
+    {
+      "name": "prodaea",
+      "email": "rlee@etherealnation.net"
+    },
+    {
+      "name": "Wei Wang",
+      "email": "weiwang85@gmail.com"
+    },
+    {
+      "name": "Thomas Boyt",
+      "email": "me@thomasboyt.com"
+    }
+  ],
   "engines": {
     "node": ">=0.10.0"
   },
@@ -20,26 +69,28 @@
     "javadoc",
     "docs",
     "apidocs",
-    "asp"
+    "asp",
+    "vbscript",
+    "vb"
   ],
   "main": "./lib/index",
   "bin": {
     "yuidoc": "./lib/cli.js"
   },
   "dependencies": {
-    "express": "^4.10.1",
+    "express": "^4.12.3",
     "graceful-fs": "2.x",
-    "marked": "^0.3.2",
+    "markdown-it": "^4.1.0",
     "minimatch": "^2.0.1",
     "rimraf": "2.x",
     "yui": "^3.18.1"
   },
   "devDependencies": {
-    "jshint": "2.4.x",
-    "ytestrunner": "~0.3.3",
-    "yuitest": ">=0.7.3",
-    "selleck": "~0.1",
-    "istanbul": "0.2.x"
+    "istanbul": "^0.3.5",
+    "jshint": "^2.6.0",
+    "selleck": "^0.1.18",
+    "ytestrunner": "^0.3.3",
+    "yuitest": "^0.7.9"
   },
   "scripts": {
     "pretest": "jshint ./lib/*.js ./tests/*.js",
