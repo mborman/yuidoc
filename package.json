@@ -3,8 +3,9 @@
   "version": "0.0.2",
   "description": "YUIDoc, YUI's JavaScript Documentation engine tweaked to work with VB/VBScript comments.",
   "author": "Mike Borman <mikewborman@gmail.com>",
+  "homepage": "https://mborman.github.io/yuidoc-asp/"
   "bugs": {
-    "url": "https://github.com/mborman/yuidoc-asp"
+    "url": "https://github.com/mborman/yuidoc-asp/issues"
   },
   "contributors": [],
   "engines": {
