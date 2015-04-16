@@ -1,4 +1,4 @@
-YUIDoc
+YUIDoc-asp
 ======
 
 YUI's JavaScript Documentation engine.
@@ -11,7 +11,29 @@ YUI's JavaScript Documentation engine.
 Overview
 --------
 
-YUIDoc is a [Node.js](http://nodejs.org/) application used at build time to
+YUIDoc-asp is a fork of YUIDoc that has been tweaked so it can recognize the comment syntax 
+required in VBScript. This fork is an exact copy of YUIDoc except it will recognize the
+following comment pattern:
+
+''/**
+'' Method description
+'' @method methodName
+'' @param {string} param1
+'' @param {number} param2
+'' @retrun {boolean} `true` if some condition is met. Otherwise `false`
+''*/
+
+Format explained:
+VBScript does not have a block comment. It only supports line comments using an apostrophe 
+as the comment marker. To make it work, the standard YUI doc comment is placed within a VBScript
+comment. Additionally the VBScript comment character (the apostrophe) causes issues with
+the code syntax highlighter (visible is you view the source from the documentation). Using
+two apostrophes at the start of each line "corrects" the code highlight. The code higlighter
+thinks the apostrophes open and close a string literal. If you only use one apostrophe the
+highlighting will toggle between string highlight and code highlight as it encounters each
+single apostrophe meant as a comment marker.
+
+YUIDoc itself is a [Node.js](http://nodejs.org/) application used at build time to
 generate API documentation for JavaScript code. YUIDoc is comment-driven and supports a wide
 range of JavaScript coding styles. The output of YUIDoc is API documentation formatted as a
 set of HTML pages including information about methods, properties, custom events and
@@ -37,7 +59,7 @@ Documentation
 Contributing
 ------------
 
-Please see the [CONTRIBUTING.md](CONTRIBUTING.md).
+This project is not intended to be very actively devloped. 
 
 License
 -------
