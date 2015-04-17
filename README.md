@@ -1,13 +1,7 @@
 YUIDoc-asp
 ======
 
-YUI's JavaScript Documentation engine.
-
-[![npm Version](https://img.shields.io/npm/v/yuidocjs.svg?style=flat-square)](https://www.npmjs.org/package/yuidocjs)
-[![Build Status](http://img.shields.io/travis/yui/yuidoc.svg?style=flat-square)](https://travis-ci.org/yui/yuidoc)
-[![Dependency Status](https://img.shields.io/david/yui/yuidoc.svg?style=flat-square)](https://david-dm.org/yui/yuidoc)
-
-[![Build Status](https://travis-ci.org/mborman/yuidoc-asp.png)](https://travis-ci.org/mborman/yuidoc-asp)
+YUI's JavaScript Documentation engine tweaked to work with VBScript.
 
 [![npm Version](https://img.shields.io/npm/v/yuidoc-asp.svg?style=flat-square)](https://www.npmjs.org/package/yuidoc-asp)
 [![Build Status](http://img.shields.io/travis/mborman/yuidoc-asp.svg?style=flat-square)](https://travis-ci.org/yui/yuidoc-asp)
