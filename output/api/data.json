@@ -1,8 +1,8 @@
 {
     "project": {
-        "name": "yuidoc-root",
+        "name": "YUIDoc",
         "description": "YUIDoc, YUI's JavaScript Documentation engine.",
-        "version": "0.6.0"
+        "version": "0.10.0"
     },
     "files": {
         "lib/builder.js": {
@@ -122,6 +122,7 @@
         "yuidoc": {
             "name": "yuidoc",
             "submodules": {},
+            "elements": {},
             "classes": {
                 "DocBuilder": 1,
                 "CLI": 1,
@@ -142,7 +143,7 @@
             "namespaces": {},
             "tag": "main",
             "file": "lib/yuidoc.js",
-            "line": 49,
+            "line": 51,
             "description": "This is the __module__ description for the `YUIDoc` module.\n\n    var options = {\n        paths: [ './lib' ],\n        outdir: './out'\n    };\n\n    var Y = require('yuidocjs');\n    var json = (new Y.YUIDoc(options)).run();",
             "itemtype": "main"
         }
@@ -158,7 +159,7 @@
             "extension_for": [],
             "module": "yuidoc",
             "file": "lib/builder.js",
-            "line": 12,
+            "line": 15,
             "description": "Takes the `JSON` data from the `DocParser` class, creates and parses markdown and handlebars\nbased templates to generate static HTML content"
         },
         "CLI": {
@@ -172,7 +173,7 @@
             "module": "yuidoc",
             "namespace": "",
             "file": "lib/cli.js",
-            "line": 9,
+            "line": 10,
             "description": "Parses the arguments, creates the options and passes them to `Y.YUIDoc` and then `Y.DocBuilder`."
         },
         "DocParser": {
@@ -186,7 +187,7 @@
             "module": "yuidoc",
             "namespace": "",
             "file": "lib/docparser.js",
-            "line": 749,
+            "line": 794,
             "description": "The doc parser accepts a **map** of files to file content.\nOnce `parse()` is called, various properties will be populated\nwith the parsers data (aggregated in the `'data'` property).",
             "extends": "Base",
             "is_constructor": 1,
@@ -209,8 +210,8 @@
             "module": "yuidoc",
             "namespace": "",
             "file": "lib/docview.js",
-            "line": 14,
-            "description": "View class borrowed from [Selleck](https://github.com/rgrove/selleck)  \nThe view class is a **`handlebars`** template helper.",
+            "line": 16,
+            "description": "View class borrowed from [Selleck](https://github.com/rgrove/selleck)\nThe view class is a **`handlebars`** template helper.",
             "is_constructor": 1,
             "params": [
                 {
@@ -236,7 +237,7 @@
             "module": "yuidoc",
             "namespace": "",
             "file": "lib/files.js",
-            "line": 8,
+            "line": 10,
             "description": "Ported fileutils methods from [Selleck](http://github.com/rgrove/selleck)"
         },
         "Help": {
@@ -250,7 +251,7 @@
             "module": "yuidoc",
             "namespace": "",
             "file": "lib/help.js",
-            "line": 8,
+            "line": 10,
             "description": "Shows the help text"
         },
         "Main": {
@@ -264,8 +265,8 @@
             "module": "yuidoc",
             "namespace": "",
             "file": "lib/index.js",
-            "line": 7,
-            "description": "Module creates the YUI instance with the required modules, uses them and exports the **Y** to be used\nby the _CLI class_ or by extenders: `require('yuidocjs');`  \nYou can use it like this:  \n\n    var options = {\n        paths: [ './lib' ],\n        outdir: './out'\n    };\n\n    var Y = require('yuidocjs');\n    var json = (new Y.YUIDoc(options)).run();",
+            "line": 8,
+            "description": "Module creates the YUI instance with the required modules, uses them and exports the **Y** to be used\nby the _CLI class_ or by extenders: `require('yuidocjs');`\nYou can use it like this:\n\n    var options = {\n        paths: [ './lib' ],\n        outdir: './out'\n    };\n\n    var Y = require('yuidocjs');\n    var json = (new Y.YUIDoc(options)).run();",
             "exports": "{YUI} Y A YUI instance"
         },
         "Options": {
@@ -279,7 +280,7 @@
             "module": "yuidoc",
             "namespace": "",
             "file": "lib/options.js",
-            "line": 10,
+            "line": 12,
             "description": "Handles argument parsing"
         },
         "Server": {
@@ -293,7 +294,7 @@
             "module": "yuidoc",
             "namespace": "",
             "file": "lib/server.js",
-            "line": 9,
+            "line": 13,
             "description": "Provides the `--server` server option for YUIDoc"
         },
         "Utils": {
@@ -307,7 +308,7 @@
             "module": "yuidoc",
             "namespace": "",
             "file": "lib/utils.js",
-            "line": 11,
+            "line": 12,
             "description": "Utilities Class"
         },
         "YUIDoc": {
@@ -321,7 +322,7 @@
             "module": "yuidoc",
             "namespace": "",
             "file": "lib/yuidoc.js",
-            "line": 49,
+            "line": 51,
             "description": "YUIDoc main class\n\n       var options = {\n           paths: [ './lib' ],\n           outdir: './out'\n       };\n\n       var Y = require('yuidoc');\n       var json = (new Y.YUIDoc(options)).run();",
             "mainName": "yuidoc",
             "tag": "main",
@@ -336,6 +337,7 @@
             ]
         }
     },
+    "elements": {},
     "classitems": [
         {
             "file": "lib/builder.js",
@@ -345,7 +347,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 120,
+            "line": 126,
             "description": "Register a `Y.Handlebars` helper method",
             "itemtype": "method",
             "name": "_addHelpers",
@@ -361,7 +363,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 137,
+            "line": 144,
             "description": "Wrapper around the Markdown parser so it can be normalized or even side stepped",
             "itemtype": "method",
             "name": "markdown",
@@ -383,7 +385,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 162,
+            "line": 169,
             "description": "Parse the item to be cross linked and return an HREF linked to the item",
             "itemtype": "method",
             "name": "_parseCrossLink",
@@ -414,39 +416,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 269,
-            "description": "List of native types to cross link to MDN",
-            "itemtype": "property",
-            "name": "NATIVES",
-            "type": "Object",
-            "class": "DocBuilder",
-            "module": "yuidoc"
-        },
-        {
-            "file": "lib/builder.js",
-            "line": 308,
-            "description": "Function to link an external type uses `NATIVES` object",
-            "itemtype": "method",
-            "name": "NATIVES_LINKER",
-            "access": "private",
-            "tagname": "",
-            "params": [
-                {
-                    "name": "name",
-                    "description": "The name of the type to link",
-                    "type": "String"
-                }
-            ],
-            "return": {
-                "description": "The combined URL",
-                "type": "String"
-            },
-            "class": "DocBuilder",
-            "module": "yuidoc"
-        },
-        {
-            "file": "lib/builder.js",
-            "line": 322,
+            "line": 297,
             "description": "Mixes the various external data soures together into the local data, augmenting\nit with flags.",
             "itemtype": "method",
             "name": "_mixExternal",
@@ -457,7 +427,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 370,
+            "line": 345,
             "description": "Fetches the remote data and fires the callback when it's all complete",
             "itemtype": "method",
             "name": "mixExternal",
@@ -474,7 +444,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 445,
+            "line": 421,
             "description": "File counter",
             "itemtype": "property",
             "name": "files",
@@ -484,7 +454,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 451,
+            "line": 427,
             "description": "Holder for project meta data",
             "itemtype": "property",
             "name": "_meta",
@@ -496,7 +466,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 458,
+            "line": 434,
             "description": "Prep the meta data to be fed to Selleck",
             "itemtype": "method",
             "name": "getProjectMeta",
@@ -509,7 +479,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 501,
+            "line": 477,
             "description": "Populate the meta data for classes",
             "itemtype": "method",
             "name": "populateClasses",
@@ -529,7 +499,27 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 525,
+            "line": 501,
+            "description": "Populate the meta data for elements",
+            "itemtype": "method",
+            "name": "populateElements",
+            "params": [
+                {
+                    "name": "opts",
+                    "description": "The original options",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "The modified options",
+                "type": "Object"
+            },
+            "class": "DocBuilder",
+            "module": "yuidoc"
+        },
+        {
+            "file": "lib/builder.js",
+            "line": 523,
             "description": "Populate the meta data for modules",
             "itemtype": "method",
             "name": "populateModules",
@@ -549,7 +539,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 571,
+            "line": 569,
             "description": "Populate the meta data for files",
             "itemtype": "method",
             "name": "populateFiles",
@@ -569,7 +559,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 628,
+            "line": 626,
             "description": "Parses file and line number from an item object and build's an HREF",
             "itemtype": "method",
             "name": "addFoundAt",
@@ -589,7 +579,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 644,
+            "line": 642,
             "description": "Augments the **DocParser** meta data to provide default values for certain keys as well as parses all descriptions\nwith the `Markdown Parser`",
             "itemtype": "method",
             "name": "augmentData",
@@ -609,7 +599,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 705,
+            "line": 702,
             "description": "Makes the default directories needed",
             "itemtype": "method",
             "name": "makeDirs",
@@ -625,7 +615,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 758,
+            "line": 755,
             "description": "Parses `<pre><code>` tags and adds the __prettyprint__ `className` to them",
             "itemtype": "method",
             "name": "_parseCode",
@@ -647,7 +637,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 771,
+            "line": 768,
             "description": "Ported from [Selleck](https://github.com/rgrove/selleck), this handles ```'s in fields\n       that are not parsed by the **Markdown** parser.",
             "itemtype": "method",
             "name": "_inlineCode",
@@ -669,7 +659,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 790,
+            "line": 787,
             "description": "Ported from [Selleck](https://github.com/rgrove/selleck)\n       Renders the handlebars templates with the default View class.",
             "itemtype": "method",
             "name": "render",
@@ -721,7 +711,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 846,
+            "line": 843,
             "description": "Render the index file",
             "itemtype": "method",
             "name": "renderIndex",
@@ -749,7 +739,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 871,
+            "line": 879,
             "description": "Generates the index.html file",
             "itemtype": "method",
             "name": "writeIndex",
@@ -777,7 +767,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 897,
+            "line": 905,
             "description": "Render a module",
             "itemtype": "method",
             "name": "renderModule",
@@ -805,7 +795,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 981,
+            "line": 1013,
             "description": "Generates the module files under \"out\"/modules/",
             "itemtype": "method",
             "name": "writeModules",
@@ -833,7 +823,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 1024,
+            "line": 1056,
             "description": "Checks an array of items (class items) to see if an item is in that list",
             "itemtype": "method",
             "name": "hasProperty",
@@ -857,7 +847,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 1041,
+            "line": 1073,
             "description": "Counter for stepping into merges",
             "access": "private",
             "tagname": "",
@@ -869,7 +859,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 1048,
+            "line": 1080,
             "description": "Merge superclass data into a child class",
             "itemtype": "method",
             "name": "mergeExtends",
@@ -895,7 +885,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 1100,
+            "line": 1132,
             "description": "Render the class file",
             "itemtype": "method",
             "name": "renderClass",
@@ -923,11 +913,44 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 1388,
-            "description": "Generates the class files under \"out\"/classes/",
+            "line": 1425,
+            "description": "Render the element file",
             "itemtype": "method",
-            "name": "writeClasses",
+            "name": "renderElement",
             "params": [
+                {
+                    "name": "cb",
+                    "description": "The callback fired when complete",
+                    "type": "Function",
+                    "props": [
+                        {
+                            "name": "html",
+                            "description": "The HTML to render this view",
+                            "type": "String"
+                        },
+                        {
+                            "name": "view",
+                            "description": "The View Data",
+                            "type": "Object"
+                        }
+                    ]
+                }
+            ],
+            "class": "DocBuilder",
+            "module": "yuidoc"
+        },
+        {
+            "file": "lib/builder.js",
+            "line": 1502,
+            "description": "Generates the class or element files under \"out\"/classes/ or \"out\"/elements/",
+            "itemtype": "method",
+            "name": "writeComponents",
+            "params": [
+                {
+                    "name": "type",
+                    "description": "The component type, \"classes\" or \"elements\"",
+                    "type": "String"
+                },
                 {
                     "name": "cb",
                     "description": "The callback to execute after it's completed",
@@ -951,7 +974,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 1431,
+            "line": 1546,
             "description": "Sort method of array of objects with a property called __name__",
             "itemtype": "method",
             "name": "nameSort",
@@ -976,7 +999,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 1454,
+            "line": 1569,
             "description": "Generates the syntax files under `\"out\"/files/`",
             "itemtype": "method",
             "name": "writeFiles",
@@ -1004,7 +1027,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 1504,
+            "line": 1619,
             "description": "Render the source file",
             "itemtype": "method",
             "name": "renderFile",
@@ -1032,7 +1055,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 1558,
+            "line": 1678,
             "description": "Write the API meta data used for the AutoComplete widget",
             "itemtype": "method",
             "name": "writeAPIMeta",
@@ -1049,7 +1072,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 1571,
+            "line": 1691,
             "description": "Render the API meta and return the JavaScript",
             "itemtype": "method",
             "name": "renderAPIMeta",
@@ -1073,7 +1096,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 1604,
+            "line": 1725,
             "description": "Normalizes a file path to a writable filename:\n\n   var path = 'lib/file.js';\n   returns 'lib_file.js';",
             "itemtype": "method",
             "name": "filterFileName",
@@ -1093,7 +1116,7 @@
         },
         {
             "file": "lib/builder.js",
-            "line": 1617,
+            "line": 1738,
             "description": "Compiles the templates from the meta-data provided by DocParser",
             "itemtype": "method",
             "name": "compile",
@@ -1109,7 +1132,7 @@
         },
         {
             "file": "lib/cli.js",
-            "line": 3,
+            "line": 4,
             "description": "Copyright (c) 2011, Yahoo! Inc. All rights reserved.\nCode licensed under the BSD License:\nhttps://github.com/yui/yuidoc/blob/master/LICENSE",
             "class": "CLI",
             "module": "yuidoc"
@@ -1123,7 +1146,7 @@
         },
         {
             "file": "lib/docparser.js",
-            "line": 11,
+            "line": 13,
             "description": "Parses the JSON data and formats it into a nice log string for\nfilename and line number: `/file/name.js:123`",
             "itemtype": "method",
             "name": "stringlog",
@@ -1145,7 +1168,7 @@
         },
         {
             "file": "lib/docparser.js",
-            "line": 38,
+            "line": 40,
             "description": "Flatten a string, remove all line breaks and replace them with a token",
             "itemtype": "method",
             "name": "implodeString",
@@ -1167,7 +1190,7 @@
         },
         {
             "file": "lib/docparser.js",
-            "line": 48,
+            "line": 50,
             "description": "Un-flatten a string, replace tokens injected with `implodeString`",
             "itemtype": "method",
             "name": "implodeString",
@@ -1189,7 +1212,7 @@
         },
         {
             "file": "lib/docparser.js",
-            "line": 94,
+            "line": 97,
             "description": "A list of known tags.  This populates a member variable\nduring initialization, and will be updated if additional\ndigesters are added.",
             "itemtype": "property",
             "name": "TAGLIST",
@@ -1200,7 +1223,7 @@
         },
         {
             "file": "lib/docparser.js",
-            "line": 174,
+            "line": 182,
             "description": "A list of ignored tags. These tags should be ignored because there is\nlikely to be used for purposes other than JSDoc tags in JavaScript comments.",
             "itemtype": "property",
             "name": "IGNORE_TAGLIST",
@@ -1211,7 +1234,7 @@
         },
         {
             "file": "lib/docparser.js",
-            "line": 186,
+            "line": 194,
             "description": "Common errors will get scrubbed instead of being ignored.",
             "itemtype": "property",
             "name": "CORRECTIONS",
@@ -1222,7 +1245,7 @@
         },
         {
             "file": "lib/docparser.js",
-            "line": 209,
+            "line": 217,
             "description": "A map of the default tag processors, keyed by the\ntag name.  Multiple tags can use the same digester\nby supplying the string name that points to the\nimplementation rather than a function.",
             "itemtype": "property",
             "name": "DIGESTERS",
@@ -1233,7 +1256,7 @@
         },
         {
             "file": "lib/docparser.js",
-            "line": 777,
+            "line": 822,
             "description": "Digesters process the tag/text pairs found in a\ncomment block.  They are looked up by tag name.\nThe digester gets the tagname, the value, the\ntarget object to apply values to, and the full\nblock that is being processed.  Digesters can\nbe declared as strings instead of a function --\nin that case, the program will try to look up\nthe key listed and use the function there instead\n(it is an alias).  Digesters can return a host\nobject in the case the tag defines a new key\nblock type (modules/classes/methods/events/properties)",
             "itemtype": "attribute",
             "name": "digesters",
@@ -1242,7 +1265,7 @@
         },
         {
             "file": "lib/docparser.js",
-            "line": 799,
+            "line": 844,
             "description": "Emitters will be schemas for the types of payloads\nthe parser will emit.  Not implemented.",
             "itemtype": "attribute",
             "name": "emitters",
@@ -1251,7 +1274,7 @@
         },
         {
             "file": "lib/docparser.js",
-            "line": 810,
+            "line": 855,
             "description": "Comment syntax type.",
             "itemtype": "attribute",
             "name": "syntaxtype",
@@ -1261,7 +1284,7 @@
         },
         {
             "file": "lib/docparser.js",
-            "line": 819,
+            "line": 864,
             "description": "The map of file names to file content.",
             "itemtype": "attribute",
             "name": "filemap",
@@ -1270,7 +1293,7 @@
         },
         {
             "file": "lib/docparser.js",
-            "line": 827,
+            "line": 872,
             "description": "A map of file names to directory name.  Provided in\ncase this needs to be used to reset the module name\nappropriately -- currently not used",
             "itemtype": "attribute",
             "name": "dirmap",
@@ -1279,7 +1302,7 @@
         },
         {
             "file": "lib/docparser.js",
-            "line": 837,
+            "line": 882,
             "description": "The file currently being parsed",
             "itemtype": "attribute",
             "name": "currentfile",
@@ -1289,7 +1312,7 @@
         },
         {
             "file": "lib/docparser.js",
-            "line": 858,
+            "line": 903,
             "description": "The main documentation block for the module itself.",
             "itemtype": "attribute",
             "name": "mainmodule",
@@ -1299,7 +1322,7 @@
         },
         {
             "file": "lib/docparser.js",
-            "line": 894,
+            "line": 939,
             "description": "The module currently being parsed",
             "itemtype": "attribute",
             "name": "currentmodule",
@@ -1309,7 +1332,7 @@
         },
         {
             "file": "lib/docparser.js",
-            "line": 953,
+            "line": 999,
             "description": "The submodule currently being parsed",
             "itemtype": "attribute",
             "name": "currentsubmodule",
@@ -1319,7 +1342,7 @@
         },
         {
             "file": "lib/docparser.js",
-            "line": 993,
+            "line": 1040,
             "description": "The class currently being parsed",
             "itemtype": "attribute",
             "name": "currentclass",
@@ -1329,7 +1352,17 @@
         },
         {
             "file": "lib/docparser.js",
-            "line": 1033,
+            "line": 1080,
+            "description": "The element currently being parsed",
+            "itemtype": "attribute",
+            "name": "currentelement",
+            "type": "String",
+            "class": "DocParser",
+            "module": "yuidoc"
+        },
+        {
+            "file": "lib/docparser.js",
+            "line": 1110,
             "description": "Takes a non-namespaced classname and resolves it to a namespace (to support `@for`)",
             "access": "private",
             "tagname": "",
@@ -1351,7 +1384,7 @@
         },
         {
             "file": "lib/docparser.js",
-            "line": 1107,
+            "line": 1188,
             "description": "Normalizes the initial indentation of the given _content_ so that the first line\nis unindented, and all other lines are unindented to the same degree as the\nfirst line. So if the first line has four spaces at the beginning, then all\nlines will be unindented four spaces. Ported from [Selleck](https://github.com/rgrove/selleck)",
             "itemtype": "method",
             "name": "unindent",
@@ -1373,7 +1406,7 @@
         },
         {
             "file": "lib/docparser.js",
-            "line": 1128,
+            "line": 1209,
             "description": "Transforms a JavaDoc style comment block (less the start and end of it)\ninto a list of tag/text pairs. The leading space and '*' are removed,\nbut the remaining whitespace is preserved so that the output should be\nfriendly for both markdown and html parsers.",
             "itemtype": "method",
             "name": "handlecomment",
@@ -1399,7 +1432,7 @@
         },
         {
             "file": "lib/docparser.js",
-            "line": 1206,
+            "line": 1287,
             "description": "Accepts a map of filenames to file content.  Returns\na map of filenames to an array of API comment block\ntext.  This expects the comment to start with / **\non its own line, and end with * / on its own\nline.  Override this function to provide an\nalternative comment parser.",
             "itemtype": "method",
             "name": "extract",
@@ -1424,7 +1457,7 @@
         },
         {
             "file": "lib/docparser.js",
-            "line": 1261,
+            "line": 1342,
             "description": "Processes all the tags in a single comment block",
             "itemtype": "method",
             "name": "processblock",
@@ -1440,7 +1473,7 @@
         },
         {
             "file": "lib/docparser.js",
-            "line": 1334,
+            "line": 1433,
             "description": "Transforms a map of filenames to arrays of comment blocks into a\nJSON structure that represents the entire processed API doc info\nand relationships between elements for the entire project.",
             "itemtype": "method",
             "name": "transform",
@@ -1460,7 +1493,7 @@
         },
         {
             "file": "lib/docparser.js",
-            "line": 1448,
+            "line": 1562,
             "description": "Extracts and transforms the filemap provided to constructor",
             "itemtype": "method",
             "name": "parse",
@@ -1492,7 +1525,7 @@
         },
         {
             "file": "lib/docview.js",
-            "line": 28,
+            "line": 30,
             "description": "**Mustache** `lambda` method for setting the HTML title",
             "itemtype": "method",
             "name": "htmlTitle",
@@ -1501,7 +1534,7 @@
         },
         {
             "file": "lib/docview.js",
-            "line": 47,
+            "line": 49,
             "description": "**Mustache** `lambda` method for setting the title",
             "itemtype": "method",
             "name": "title",
@@ -1517,7 +1550,7 @@
         },
         {
             "file": "lib/files.js",
-            "line": 37,
+            "line": 39,
             "description": "Copy a directory from one location to another",
             "itemtype": "method",
             "name": "copyDirectory",
@@ -1550,7 +1583,7 @@
         },
         {
             "file": "lib/files.js",
-            "line": 127,
+            "line": 128,
             "description": "Copy a file from one location to another",
             "itemtype": "method",
             "name": "copyFile",
@@ -1590,7 +1623,7 @@
         },
         {
             "file": "lib/files.js",
-            "line": 180,
+            "line": 181,
             "description": "If _source_ is a file, copies it to _dest_. If it's a directory, recursively\ncopies it and all files and directories it contains to _dest_.\n\nNote that when attempting to copy a file into a directory, you should specify\nthe full path to the new file (including the new filename). Otherwise, it will\nbe interpreted as an attempt to copy the _source_ file *over* the _dest_\ndirectory instead of *into* it.\n\nKnown issues:\n- Doesn't preserve ownership or permissions on copied files/directories.",
             "itemtype": "method",
             "name": "copyPath",
@@ -1630,7 +1663,7 @@
         },
         {
             "file": "lib/files.js",
-            "line": 226,
+            "line": 227,
             "description": "If _path_ is a file, deletes it. If _path_ is a directory, recursively deletes\nit and all files and directories it contains.\n\nThis method is synchronous.",
             "itemtype": "method",
             "name": "deletePath",
@@ -1646,7 +1679,7 @@
         },
         {
             "file": "lib/files.js",
-            "line": 251,
+            "line": 252,
             "description": "Check to see if this is a directory",
             "itemtype": "method",
             "name": "isDirectory",
@@ -1673,7 +1706,7 @@
         },
         {
             "file": "lib/files.js",
-            "line": 282,
+            "line": 283,
             "description": "Check to see if this is a File",
             "itemtype": "method",
             "name": "isFile",
@@ -1700,7 +1733,7 @@
         },
         {
             "file": "lib/files.js",
-            "line": 311,
+            "line": 312,
             "description": "Check to see if this is a SymLink",
             "itemtype": "method",
             "name": "isSymbolicLink",
@@ -1720,7 +1753,7 @@
         },
         {
             "file": "lib/files.js",
-            "line": 325,
+            "line": 326,
             "description": "Like `fs.lstatSync()`, but returns `null` instead of throwing when _path_\ndoesn't exist. Will still throw on other types of errors.",
             "itemtype": "method",
             "name": "lstatSync",
@@ -1740,7 +1773,7 @@
         },
         {
             "file": "lib/files.js",
-            "line": 347,
+            "line": 348,
             "description": "Like `fs.statSync()`, but returns `null` instead of throwing when _path_\ndoesn't exist. Will still throw on other types of errors.",
             "itemtype": "method",
             "name": "statSync",
@@ -1760,7 +1793,7 @@
         },
         {
             "file": "lib/files.js",
-            "line": 368,
+            "line": 369,
             "description": "Copy the theme assets directory",
             "itemtype": "method",
             "name": "copyAssets",
@@ -1791,7 +1824,7 @@
         },
         {
             "file": "lib/files.js",
-            "line": 416,
+            "line": 417,
             "description": "Helper method for getting JSON data from a local file",
             "itemtype": "method",
             "name": "getJSON",
@@ -1811,7 +1844,7 @@
         },
         {
             "file": "lib/files.js",
-            "line": 431,
+            "line": 432,
             "description": "Helper method for writing files to disk. It wraps the NodeJS file API",
             "itemtype": "method",
             "name": "writeFile",
@@ -1845,7 +1878,7 @@
         },
         {
             "file": "lib/help.js",
-            "line": 14,
+            "line": 16,
             "description": "The help text to display",
             "access": "private",
             "tagname": "",
@@ -1857,7 +1890,7 @@
         },
         {
             "file": "lib/help.js",
-            "line": 61,
+            "line": 63,
             "description": "Render the help message as a string",
             "itemtype": "method",
             "name": "renderHelp",
@@ -1870,7 +1903,7 @@
         },
         {
             "file": "lib/help.js",
-            "line": 71,
+            "line": 73,
             "description": "Display the help message, write it to the screen and exit",
             "itemtype": "method",
             "name": "showHelp",
@@ -1893,7 +1926,7 @@
         },
         {
             "file": "lib/options.js",
-            "line": 16,
+            "line": 18,
             "description": "Parses arguments and returns an Object of config options",
             "itemtype": "method",
             "name": "Options",
@@ -1927,7 +1960,7 @@
         },
         {
             "file": "lib/server.js",
-            "line": 15,
+            "line": 19,
             "description": "Cache for external mixed in data.",
             "itemtype": "property",
             "name": "_externalData",
@@ -1939,7 +1972,7 @@
         },
         {
             "file": "lib/server.js",
-            "line": 22,
+            "line": 26,
             "description": "Middleware to parse the API docs per request",
             "itemtype": "method",
             "name": "parse",
@@ -1965,7 +1998,7 @@
         },
         {
             "file": "lib/server.js",
-            "line": 40,
+            "line": 44,
             "description": "Create the routes used to serve YUIDoc files dynamically",
             "itemtype": "method",
             "name": "routes",
@@ -1974,7 +2007,7 @@
         },
         {
             "file": "lib/server.js",
-            "line": 110,
+            "line": 114,
             "description": "`/files` endpoint",
             "itemtype": "method",
             "name": "files",
@@ -1995,7 +2028,7 @@
         },
         {
             "file": "lib/server.js",
-            "line": 136,
+            "line": 140,
             "description": "`/classes` endpoint",
             "itemtype": "method",
             "name": "clazz",
@@ -2016,7 +2049,7 @@
         },
         {
             "file": "lib/server.js",
-            "line": 152,
+            "line": 156,
             "description": "`/modules` endpoint",
             "itemtype": "method",
             "name": "modules",
@@ -2037,7 +2070,7 @@
         },
         {
             "file": "lib/server.js",
-            "line": 168,
+            "line": 172,
             "description": "`/` endpoint",
             "itemtype": "method",
             "name": "home",
@@ -2058,7 +2091,7 @@
         },
         {
             "file": "lib/server.js",
-            "line": 180,
+            "line": 184,
             "description": "Creates the Express server and prep's YUI for serving",
             "itemtype": "method",
             "name": "init",
@@ -2067,7 +2100,7 @@
         },
         {
             "file": "lib/server.js",
-            "line": 198,
+            "line": 200,
             "description": "Start the server with the supplied options.",
             "itemtype": "method",
             "name": "start",
@@ -2090,7 +2123,7 @@
         },
         {
             "file": "lib/utils.js",
-            "line": 31,
+            "line": 32,
             "description": "Escapes HTML characters in _html_.",
             "itemtype": "method",
             "name": "escapeHTML",
@@ -2110,7 +2143,7 @@
         },
         {
             "file": "lib/utils.js",
-            "line": 44,
+            "line": 45,
             "description": "Normalizes the initial indentation of the given _content_ so that the first line\nis unindented, and all other lines are unindented to the same degree as the\nfirst line. So if the first line has four spaces at the beginning, then all\nlines will be unindented four spaces.",
             "itemtype": "method",
             "name": "unindent",
@@ -2132,7 +2165,7 @@
         },
         {
             "file": "lib/utils.js",
-            "line": 65,
+            "line": 66,
             "description": "Like `getPages()`, but returns only the files under the `layout/` subdirectory\nof the specified _dir_.",
             "itemtype": "method",
             "name": "getLayouts",
@@ -2152,7 +2185,7 @@
         },
         {
             "file": "lib/utils.js",
-            "line": 78,
+            "line": 79,
             "description": "Loads and returns the content of the specified page file.",
             "itemtype": "method",
             "name": "getPage",
@@ -2172,7 +2205,7 @@
         },
         {
             "file": "lib/utils.js",
-            "line": 93,
+            "line": 94,
             "description": "Loads pages (files with a `.handlebars` extension) in the specified directory and\nreturns an object containing a mapping of page names (the part of the filename)\npreceding the `.handlebars` extension) to page content.",
             "itemtype": "method",
             "name": "getPages",
@@ -2192,7 +2225,7 @@
         },
         {
             "file": "lib/utils.js",
-            "line": 126,
+            "line": 127,
             "description": "Like `getPages()`, but returns only the files under the `partial/` subdirectory\nof the specified _dir_.",
             "itemtype": "method",
             "name": "getPartials",
@@ -2212,7 +2245,7 @@
         },
         {
             "file": "lib/utils.js",
-            "line": 140,
+            "line": 141,
             "description": "Mix/merge/munge data into the template.",
             "itemtype": "method",
             "name": "prepare",
@@ -2250,13 +2283,13 @@
         },
         {
             "file": "lib/utils.js",
-            "line": 226,
+            "line": 227,
             "description": "Walk the directory tree to locate the yuidoc.json file.",
             "itemtype": "method",
             "name": "getProjectData",
             "params": [
                 {
-                    "name": "dir",
+                    "name": "directory",
                     "description": "The directory to start from",
                     "type": "Path",
                     "optional": true,
@@ -2268,15 +2301,20 @@
         },
         {
             "file": "lib/utils.js",
-            "line": 340,
+            "line": 339,
             "description": "Walks the tree from this dir and returns all the subdirs",
             "itemtype": "method",
             "name": "getDirs",
             "params": [
                 {
-                    "name": "dir",
+                    "name": "baseDir",
                     "description": "The dir to begin at",
                     "type": "String"
+                },
+                {
+                    "name": "ignore",
+                    "description": "An array of paths to ignore",
+                    "type": "Array"
                 }
             ],
             "return": {
@@ -2288,7 +2326,7 @@
         },
         {
             "file": "lib/utils.js",
-            "line": 366,
+            "line": 384,
             "description": "Make sure all the paths passed are directories and that they are not in the ignore list.",
             "itemtype": "method",
             "name": "validatePaths",
@@ -2311,7 +2349,7 @@
         },
         {
             "file": "lib/utils.js",
-            "line": 454,
+            "line": 459,
             "description": "Takes a type string and converts it to a \"First letter upper cased\" type. e.g. `(string -> String, object -> Object)`",
             "itemtype": "method",
             "name": "fixType",
@@ -2331,7 +2369,7 @@
         },
         {
             "file": "lib/utils.js",
-            "line": 476,
+            "line": 481,
             "description": "Produces a normalized web path by joining all the parts and normalizing the\nfilesystem-like path into web compatible url.\nSupports relative and absolute paths.\nCourtesy of [Mojito's utils](https://github.com/yahoo/mojito/)",
             "itemtype": "method",
             "name": "webpath",
@@ -2358,7 +2396,7 @@
         },
         {
             "file": "lib/yuidoc.js",
-            "line": 29,
+            "line": 31,
             "description": "The default list of configuration options",
             "itemtype": "property",
             "name": "OPTIONS",
@@ -2369,7 +2407,7 @@
         },
         {
             "file": "lib/yuidoc.js",
-            "line": 66,
+            "line": 68,
             "description": "Holds the number of files that we are processing.",
             "itemtype": "property",
             "name": "filecount",
@@ -2381,7 +2419,7 @@
         },
         {
             "file": "lib/yuidoc.js",
-            "line": 73,
+            "line": 75,
             "description": "Hash map of dirnames to selleck config options.",
             "itemtype": "property",
             "name": "selleck",
@@ -2393,7 +2431,7 @@
         },
         {
             "file": "lib/yuidoc.js",
-            "line": 80,
+            "line": 82,
             "description": "Holder for the list of files we are processing.",
             "itemtype": "property",
             "name": "filemap",
@@ -2405,7 +2443,7 @@
         },
         {
             "file": "lib/yuidoc.js",
-            "line": 87,
+            "line": 89,
             "description": "Holder for the list of directories we are processing.",
             "itemtype": "property",
             "name": "dirmap",
@@ -2417,7 +2455,7 @@
         },
         {
             "file": "lib/yuidoc.js",
-            "line": 95,
+            "line": 97,
             "description": "Internal holder for configuration options.",
             "itemtype": "property",
             "name": "options",
@@ -2429,7 +2467,7 @@
         },
         {
             "file": "lib/yuidoc.js",
-            "line": 112,
+            "line": 114,
             "description": "Always exclude these directories",
             "itemtype": "method",
             "name": "_setDefaultExcludes",
@@ -2440,7 +2478,7 @@
         },
         {
             "file": "lib/yuidoc.js",
-            "line": 127,
+            "line": 129,
             "description": "Does post process on self.options.",
             "itemtype": "method",
             "name": "_processConfig",
@@ -2451,7 +2489,7 @@
         },
         {
             "file": "lib/yuidoc.js",
-            "line": 138,
+            "line": 140,
             "description": "Walks the paths and parses the directory contents",
             "itemtype": "method",
             "name": "walk",
@@ -2462,7 +2500,7 @@
         },
         {
             "file": "lib/yuidoc.js",
-            "line": 149,
+            "line": 151,
             "description": "Walks the passed directory and grabs all the files recursively.",
             "itemtype": "method",
             "name": "parsedir",
@@ -2480,7 +2518,7 @@
         },
         {
             "file": "lib/yuidoc.js",
-            "line": 190,
+            "line": 192,
             "description": "Gathers all the file data and populates the filemap and dirmap hashes.",
             "itemtype": "method",
             "name": "parsefiles",
@@ -2503,8 +2541,8 @@
         },
         {
             "file": "lib/yuidoc.js",
-            "line": 248,
-            "description": "Applies preprocessors to the data tree. \nThis function first clones the data and operates on the clone.",
+            "line": 250,
+            "description": "Applies preprocessors to the data tree.\nThis function first clones the data and operates on the clone.",
             "itemtype": "method",
             "name": "runPreprocessors",
             "access": "private",
@@ -2518,7 +2556,7 @@
         },
         {
             "file": "lib/yuidoc.js",
-            "line": 287,
+            "line": 289,
             "description": "Writes the parser JSON data to disk.\nApplies preprocessors, if any.",
             "itemtype": "method",
             "name": "writeJSON",
@@ -2540,7 +2578,7 @@
         },
         {
             "file": "lib/yuidoc.js",
-            "line": 376,
+            "line": 378,
             "description": "Process the config, walk the file tree and write out the JSON data.",
             "itemtype": "method",
             "name": "run",
@@ -2553,7 +2591,7 @@
         },
         {
             "file": "lib/yuidoc.js",
-            "line": 382,
+            "line": 384,
             "description": "Timestamp holder so we know when YUIDoc started the parse process.",
             "itemtype": "property",
             "name": "starttime",
@@ -2563,7 +2601,7 @@
         },
         {
             "file": "lib/yuidoc.js",
-            "line": 404,
+            "line": 406,
             "description": "Timestamp holder so we know when YUIDoc has finished the parse process.",
             "itemtype": "property",
             "name": "endtime",
@@ -2575,7 +2613,7 @@
     "warnings": [
         {
             "message": "unknown tag: exports",
-            "line": " lib/index.js:7"
+            "line": " lib/index.js:8"
         },
         {
             "message": "Missing item type\nCopyright (c) 2011, Yahoo! Inc. All rights reserved.\nCode licensed under the BSD License:\nhttps://github.com/yui/yuidoc/blob/master/LICENSE",
@@ -2583,7 +2621,7 @@
         },
         {
             "message": "Missing item type\nCopyright (c) 2011, Yahoo! Inc. All rights reserved.\nCode licensed under the BSD License:\nhttps://github.com/yui/yuidoc/blob/master/LICENSE",
-            "line": " lib/cli.js:3"
+            "line": " lib/cli.js:4"
         },
         {
             "message": "Missing item type\nCopyright (c) 2011, Yahoo! Inc. All rights reserved.\nCode licensed under the BSD License:\nhttps://github.com/yui/yuidoc/blob/master/LICENSE",

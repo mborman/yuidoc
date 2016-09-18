@@ -1,11 +1,18 @@
-/*global Y:true */
-var YUITest = require('yuitest'),
-    Assert = YUITest.Assert,
-    path = require('path'),
-    Y = require(path.join(__dirname, '../', 'lib', 'index'));
+'use strict';
+
+var YUITest = require('yuitest');
+var Assert = YUITest.Assert;
+var path = require('path');
+var Y = require(path.join(__dirname, '../', 'lib', 'index'));
 
 var suite = new YUITest.TestSuite({
-    name: 'Utils Test Suite'
+    name: 'Utils Test Suite',
+    setUp: function () {
+        process.chdir(__dirname);
+    },
+    tearDown: function () {
+        process.chdir(__dirname);
+    }
 });
 
 suite.add(new YUITest.TestCase({
@@ -73,22 +80,78 @@ suite.add(new YUITest.TestCase({
 
         Assert.isArray(options.paths, 'Failed to set path');
         Assert.areSame(3, options.paths.length, 'Failed to retrieve all path options');
+    },
+    'test: ignore paths': function () {
+        var options;
+
+        process.chdir(path.join(__dirname, 'input/with-symlink'));
+
+        // Simulate a path provided by a configuration
+        options = {
+            paths: 'a',
+            ignorePaths: [
+              'a/d',
+              'c'
+            ]
+        };
+        options = Y.Project.init(options);
+
+        Assert.isArray(options.paths, 'paths are present');
+        Assert.areSame(1, options.paths.length, 'one path present');
+        Assert.areSame('a', options.paths[0], 'path a is in paths');
     }
 }));
 
 suite.add(new YUITest.TestCase({
     name: 'produce valid web urls',
-    'test: Adds paths onto end in sequence' : function() {
+    'test: Adds paths onto end in sequence': function() {
         var url = Y.webpath('foo', 'bar', 'baz');
         Assert.areEqual('foo/bar/baz', url, 'parts should be added in sequence');
     },
-    'test: normalises windows paths into web happy urls' : function() {
+    'test: normalises windows paths into web happy urls': function() {
         var url = Y.webpath('foo\\bar', 'baz');
         Assert.areEqual('foo/bar/baz', url, '\\ should be normalised to /');
     },
-    'test: joins relative paths' : function() {
+    'test: joins relative paths': function() {
         var url = Y.webpath('./foo/bar', './baz/');
         Assert.areEqual('foo/bar/baz/', url, 'should join relative paths');
+    }
+}));
+
+suite.add(new YUITest.TestCase({
+    name: 'getDirs',
+    setUp: function () {
+        process.chdir(__dirname);
+    },
+    'test: gets paths as array': function() {
+        process.chdir(__dirname);
+        var pathPrefix = __dirname + '/input/folders1';
+        var dirs = Y.getDirs(pathPrefix, []);
+        Assert.isArray(dirs);
+        Assert.areSame(2, dirs.length);
+        Assert.areNotSame(-1, dirs.indexOf(pathPrefix + '/one'), 'contains path /one');
+        Assert.areNotSame(-1, dirs.indexOf(pathPrefix + '/one/two'), 'contains path /one/two');
+    },
+    'test: gets paths from . as array': function() {
+        var pathPrefix = __dirname + '/input/folders1';
+        process.chdir(pathPrefix);
+        var dirs = Y.getDirs('.', []);
+        Assert.isArray(dirs);
+        Assert.areSame(2, dirs.length);
+        Assert.areNotSame(-1, dirs.indexOf('one'), 'contains path /one');
+        Assert.areNotSame(-1, dirs.indexOf('one/two'), 'contains path /one/two');
+    },
+    'test: ignores paths': function() {
+        process.chdir(__dirname);
+        var pathPrefix = __dirname + '/input/with-symlink';
+        var dirs = Y.getDirs(pathPrefix, ['c']);
+        Assert.isArray(dirs);
+        Assert.areSame(2, dirs.length);
+        Assert.areSame(-1, dirs.indexOf(pathPrefix + '.gitignore'), 'does not contain file some-file');
+        Assert.areSame(-1, dirs.indexOf(pathPrefix + '/a/b'), 'does not contain symlink /a/b');
+        Assert.areSame(-1, dirs.indexOf(pathPrefix + '/c'), 'does not contain path /c');
+        Assert.areNotSame(-1, dirs.indexOf(pathPrefix + '/a'), 'contains path /a');
+        Assert.areNotSame(-1, dirs.indexOf(pathPrefix + '/a/d'), 'contains path /a/d');
     }
 }));
 

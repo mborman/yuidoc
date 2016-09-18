@@ -1,10 +1,11 @@
-/*global Y:true */
-var YUITest = require('yuitest'),
-    Assert = YUITest.Assert,
-    ArrayAssert = YUITest.ArrayAssert,
-    path = require('path'),
-    fs = require('fs'),
-    Y = require(path.join(__dirname, '../', 'lib', 'index'));
+'use strict';
+
+var YUITest = require('yuitest');
+var Assert = YUITest.Assert;
+var ArrayAssert = YUITest.ArrayAssert;
+var path = require('path');
+var fs = require('fs');
+var Y = require(path.join(__dirname, '../', 'lib', 'index'));
 
 //Move to the test dir before running the tests.
 process.chdir(__dirname);
@@ -14,9 +15,16 @@ var existsSync = fs.existsSync || path.existsSync;
 var suite = new YUITest.TestSuite({
     name: 'Parser Test Suite',
     setUp: function () {
+        process.chdir(__dirname);
         var json = (new Y.YUIDoc({
             quiet: true,
-            paths: ['input/'],
+            paths: [
+                'input/charts',
+                'input/inherit',
+                'input/namespace',
+                'input/test',
+                'input/test2'
+            ],
             outdir: './out'
         })).run();
 
@@ -26,7 +34,7 @@ var suite = new YUITest.TestSuite({
 });
 
 suite.add(new YUITest.TestCase({
-    name: "Project Data",
+    name: 'Project Data',
     setUp: function () {
         this.project = suite.project;
         this.data = suite.data;
@@ -51,8 +59,8 @@ suite.add(new YUITest.TestCase({
     },
     'test: parser': function () {
         var keys = Object.keys(this.data);
-        Assert.areEqual(6, keys.length, 'Failed to populate all fields');
-        ArrayAssert.itemsAreSame(['project', 'files', 'modules', 'classes', 'classitems', 'warnings'], keys, 'Object keys are wrong');
+        Assert.areEqual(7, keys.length, 'Failed to populate all fields');
+        ArrayAssert.itemsAreSame(['project', 'files', 'modules', 'classes', 'elements', 'classitems', 'warnings'], keys, 'Object keys are wrong');
     },
     'test: project data': function () {
         Assert.areSame(path.normalize('input/test/test.js'), this.project.file, 'Project data loaded from wrong file');
@@ -180,6 +188,44 @@ suite.add(new YUITest.TestCase({
         ArrayAssert.itemsAreSame(['P.storage', 'P'], Object.keys(m.namespaces), 'Namespace failed to parse');
 
     },
+    'test: element parsing': function () {
+        var els = this.data.elements,
+            foo = els['x-foo'],
+            bar = els['x-bar'];
+
+        Assert.isObject(foo, 'Failed to find <x-foo> element');
+        Assert.areSame('x-foo', foo.name, 'Failed to set name');
+        Assert.areSame('anim', foo.module, 'Failed to set module');
+
+        Assert.isObject(bar, 'Failed to find <x-bar> element');
+        Assert.areSame('x-bar', bar.name, 'Failed to set name');
+        Assert.areSame('anim', bar.module, 'Failed to set module');
+    },
+    'test: element details parsing': function () {
+        var baz = this.data.elements['x-baz'];
+
+        Assert.isObject(baz, 'Failed to find <x-baz> element');
+        Assert.areSame('x-baz', baz.name, 'Failed to set name');
+        Assert.areSame('Element 3', baz.description, 'Failed to set description');
+        Assert.areSame('<body>, <x-foo>', baz.parents, 'Failed to set parents');
+        Assert.areSame('<x-bar>', baz.contents, 'Failed to set contents');
+        Assert.areSame('XBazElement', baz.interface, 'Failed to set interface');
+    },
+    'test: element attributes parsing': function () {
+        var baz = this.data.elements['x-baz'];
+
+        Assert.isObject(baz, 'Failed to find <x-baz> element');
+        Assert.areSame(3, baz.attributes.length, 'Failed to parse all the attributes');
+
+        Assert.areSame('first', baz.attributes[0].name, 'Failed to set first attribute name');
+        Assert.areSame('first attribute test', baz.attributes[0].description, 'Failed to set first attribute description');
+
+        Assert.areSame('second', baz.attributes[1].name, 'Failed to set second attribute name');
+        Assert.areSame('second attribute test', baz.attributes[1].description.replace(/\s+/g, ' '), 'Failed to set second attribute description');
+
+        Assert.areSame('third', baz.attributes[2].name, 'Failed to set third attribute name');
+        Assert.areSame('third attribute test', baz.attributes[2].description.replace(/\s+/g, ' '), 'Failed to set third attribute description');
+    },
     'test: class parsing': function () {
         var cl = this.data.classes,
             anim, easing, my, other, m;
@@ -254,12 +300,12 @@ suite.add(new YUITest.TestCase({
         Assert.areSame('', item.evil, 'Single tag not found');
         Assert.areSame('HTML', item.injects.type, 'Injection type not found');
 
-        Assert.isUndefined(item["return"].type, 'Type should be missing');
+        Assert.isUndefined(item.return.type, 'Type should be missing');
         Assert.isUndefined(item.throws.type, 'Type should be missing');
         Assert.areSame(2, item.example.length, 'Should have 2 example snippets');
 
         item2 = this.findByName('testobjectparam', 'myclass');
-        Assert.areSame('String', item2["return"].type, 'Type should not be missing');
+        Assert.areSame('String', item2.return.type, 'Type should not be missing');
         Assert.areSame('Error', item2.throws.type, 'Type should not be missing');
     },
     'test: parameter parsing': function () {
@@ -291,7 +337,7 @@ suite.add(new YUITest.TestCase({
         Assert.areSame(1, item2.params.length, 'Failed to parse all 5 parameters');
         Assert.isTrue(item2.params[0].optional, 'Optional not set');
         Assert.isTrue(item2.params[0].multiple, 'Multiple not set');
-        Assert.isUndefined(item2["return"].type, 'Type should be missing');
+        Assert.isUndefined(item2.return.type, 'Type should be missing');
         Assert.isUndefined(item2.throws.type, 'Type should be missing');
 
         item2 = this.findByName('test1ton', 'myclass');
@@ -299,7 +345,7 @@ suite.add(new YUITest.TestCase({
         Assert.areSame(1, item2.params.length, 'Failed to parse all 5 parameters');
         Assert.isUndefined(item2.params[0].optional, 'Optional should not be set');
         Assert.isTrue(item2.params[0].multiple, 'Multiple not set');
-        Assert.isUndefined(item2["return"].type, 'Type should be missing');
+        Assert.isUndefined(item2.return.type, 'Type should be missing');
         Assert.isUndefined(item2.throws.type, 'Type should be missing');
 
         item3 = this.findByName('testrestparam0n', 'myclass');
@@ -307,7 +353,7 @@ suite.add(new YUITest.TestCase({
         Assert.areSame(1, item3.params.length, 'Failed to parse all 5 parameters');
         Assert.isTrue(item3.params[0].optional, 'Optional not set');
         Assert.isTrue(item3.params[0].multiple, 'Multiple not set');
-        Assert.isUndefined(item3['return'].type, 'Type should be missing');
+        Assert.isUndefined(item3.return.type, 'Type should be missing');
         Assert.isUndefined(item3.throws.type, 'Type should be missing');
 
         item4 = this.findByName('testrestparam1n', 'myclass');
@@ -315,7 +361,7 @@ suite.add(new YUITest.TestCase({
         Assert.areSame(1, item4.params.length, 'Failed to parse all 5 parameters');
         Assert.isUndefined(item4.params[0].optional, 'Optional should not be set');
         Assert.isTrue(item4.params[0].multiple, 'Multiple not set');
-        Assert.isUndefined(item4['return'].type, 'Type should be missing');
+        Assert.isUndefined(item4.return.type, 'Type should be missing');
         Assert.isUndefined(item4.throws.type, 'Type should be missing');
 
         item5 = this.findByName('testAspCommentSyntax', 'myclass');
@@ -349,10 +395,10 @@ suite.add(new YUITest.TestCase({
     'test: indented description': function () {
         var item = this.findByName('testNewlineBeforeDescription', 'myclass');
 
-        Assert.areSame('Boolean', item['return'].type, 'Type should be correct.');
+        Assert.areSame('Boolean', item.return.type, 'Type should be correct.');
         Assert.areSame(
             'Sometimes true, sometimes false.\nNobody knows!',
-            item['return'].description,
+            item.return.description,
             'Description indentation should be normalized to the first line.'
         );
         Assert.areSame('Error', item.throws.type, 'Type should be correct.');
@@ -387,7 +433,7 @@ suite.add(new YUITest.TestCase({
         var item = this.findByName('testoptional', 'myclass');
 
         Assert.isObject(item, 'failed to find item');
-        Assert.isNotUndefined(item["return"], 'Failed to replace returns with return');
+        Assert.isNotUndefined(item.return, 'Failed to replace returns with return');
 
         item = this.findByName('_positionChangeHandler', 'Axis');
         Assert.isObject(item, 'failed to find item');

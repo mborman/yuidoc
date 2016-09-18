@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib/index.js - yuidoc-root</title>
+    <title>lib/index.js - YUIDoc</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -14,10 +14,10 @@
 <div id="doc">
     <div id="hd" class="yui3-g header">
         <div class="yui3-u-3-4">
-                <h1><img src="../assets/css/logo.png" title="yuidoc-root" width="117" height="52"></h1>
+                <h1><img src="../assets/css/logo.png" title="YUIDoc" width="117" height="52"></h1>
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.6.0</em>
+            <em>API Docs for: 0.10.0</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -50,6 +50,7 @@
                                 <li><a href="../classes/Utils.html">Utils</a></li>
                                 <li><a href="../classes/YUIDoc.html">YUIDoc</a></li>
                             </ul>
+                
                 
                             <ul id="api-modules" class="apis modules">
                                 <li><a href="../modules/yuidoc.html">yuidoc</a></li>
@@ -95,11 +96,12 @@
  * Code licensed under the BSD License:
  * https://github.com/yui/yuidoc/blob/master/LICENSE
  */
-/*global YUI:true, Y:true */
+&#x27;use strict&#x27;;
+
 /**
 Module creates the YUI instance with the required modules, uses them and exports the **Y** to be used
-by the _CLI class_ or by extenders: &#x60;require(&#x27;yuidocjs&#x27;);&#x60;  
-You can use it like this:  
+by the _CLI class_ or by extenders: &#x60;require(&#x27;yuidocjs&#x27;);&#x60;
+You can use it like this:
 
     var options = {
         paths: [ &#x27;./lib&#x27; ],
@@ -123,11 +125,22 @@ args.forEach(function (item) {
     }
 });
 
-var YUI = require(&#x27;yui&#x27; + (debug ? &#x27;/debug&#x27; : &#x27;&#x27;)).YUI,
-    path = require(&#x27;path&#x27;),
-    fs = require(&#x27;graceful-fs&#x27;),
-    metaPath = path.join(__dirname, &#x27;../&#x27;, &#x27;package.json&#x27;);
+var YUI = require(&#x27;yui&#x27; + (debug ? &#x27;/debug&#x27; : &#x27;&#x27;)).YUI;
+var path = require(&#x27;path&#x27;);
+var fs = require(&#x27;graceful-fs&#x27;);
+var metaPath = path.join(__dirname, &#x27;../&#x27;, &#x27;package.json&#x27;);
 
+function log (message, level) {
+    if (!message || !level || typeof console[level] !== &#x27;function&#x27;) {
+        return;
+    }
+
+    if (typeof message === &#x27;object&#x27;) {
+        message = JSON.stringify(message);
+    }
+
+    console[level](&#x27;%s: %s&#x27;, level, message);
+}
 
 process.on(&#x27;uncaughtException&#x27;, function (msg) {
     var meta = JSON.parse(fs.readFileSync(metaPath)),
@@ -136,6 +149,7 @@ process.on(&#x27;uncaughtException&#x27;, function (msg) {
 
     inst.applyConfig({
         debug: true,
+        logFn: log,
         useColor: useColor
     });
 
@@ -192,6 +206,7 @@ var Y = YUI({
         attribute: true,
         handlebars: true
     },
+    logFn: log,
     useSync: true
 }).use(&#x27;utils&#x27;, &#x27;docparser&#x27;, &#x27;yuidoc&#x27;, &#x27;doc-builder&#x27;, &#x27;docview&#x27;, &#x27;files&#x27;, &#x27;help&#x27;, &#x27;options&#x27;, &#x27;server&#x27;, &#x27;project&#x27;);
 
