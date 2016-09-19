@@ -3,9 +3,9 @@ YUIDoc-asp
 
 YUI's JavaScript Documentation engine tweaked to work with VBScript.
 
-[![npm](https://img.shields.io/npm/v/npm.svg?maxAge=2592000)](https://www.npmjs.com/package/yuidoc-asp)
-[![Travis](https://img.shields.io/travis/rust-lang/rust.svg?maxAge=2592000)](https://travis-ci.org/mborman/yuidoc-asp)
-[![David](https://img.shields.io/david/strongloop/express.svg?maxAge=2592000)](https://david-dm.org/mborman/yuidoc-asp)
+[![npm Version](https://img.shields.io/npm/v/yuidoc-asp.svg?style=flat-square)](https://www.npmjs.org/package/yuidoc-asp)
+[![Build Status](http://img.shields.io/travis/mborman/yuidoc-asp.svg?style=flat-square)](https://travis-ci.org/mborman/yuidoc-asp)
+[![Dependency Status](https://img.shields.io/david/mborman/yuidoc-asp.svg?style=flat-square)](https://david-dm.org/mborman/yuidoc-asp)
 
 Overview
 --------
